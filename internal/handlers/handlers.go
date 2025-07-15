@@ -11,7 +11,7 @@ import (
 )
 
 func HandleMain(res http.ResponseWriter, req *http.Request) {
-	http.ServeFile(res, req, "index.html")
+	http.ServeFile(res, req, "../index.html")
 }
 
 func HandleUpload(res http.ResponseWriter, req *http.Request) {
@@ -30,9 +30,10 @@ func HandleUpload(res http.ResponseWriter, req *http.Request) {
 
 	convertedString := service.ConvertMorseOrText(string(data))
 
-	root, err := os.OpenRoot("result/")
+	root, err := os.OpenRoot("../result/")
 	if err != nil {
 		http.Error(res, "internal error", http.StatusInternalServerError)
+		log.Println(err)
 		return
 	}
 
@@ -50,5 +51,6 @@ func HandleUpload(res http.ResponseWriter, req *http.Request) {
 
 	dst.WriteString(convertedString)
 
+	res.WriteHeader(http.StatusOK)
 	io.WriteString(res, convertedString)
 }
