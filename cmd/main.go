@@ -12,6 +12,7 @@ func main() {
 	srv := server.NewServer(logger)
 
 	logger.Printf("Starting web-server at %s", srv.Server.Addr)
+	logger.Println(os.Getwd())
 
 	if err := srv.Server.ListenAndServe(); err != nil {
 		log.Fatalf("error while starting the server: %s", err.Error())

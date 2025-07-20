@@ -11,6 +11,7 @@ import (
 )
 
 func HandleMain(res http.ResponseWriter, req *http.Request) {
+	res.WriteHeader(http.StatusOK)
 	http.ServeFile(res, req, "index.html")
 }
 
