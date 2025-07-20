@@ -12,16 +12,7 @@ func main() {
 	srv := server.NewServer(logger)
 
 	logger.Printf("Starting web-server at %s", srv.Server.Addr)
-	logger.Println(os.Getwd())
-
-	entries, err := os.ReadDir("./")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	for _, e := range entries {
-		log.Println(e.Name())
-	}
+	os.Mkdir("result", 0755)
 
 	if err := srv.Server.ListenAndServe(); err != nil {
 		log.Fatalf("error while starting the server: %s", err.Error())
