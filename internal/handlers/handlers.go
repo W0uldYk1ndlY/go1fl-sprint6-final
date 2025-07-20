@@ -51,5 +51,5 @@ func HandleUpload(res http.ResponseWriter, req *http.Request) {
 
 	dst.WriteString(convertedString)
 
-	io.WriteString(res, "OK")
+	io.WriteString(res, convertedString)
 }
