@@ -14,7 +14,7 @@ func main() {
 	logger.Printf("Starting web-server at %s", srv.Server.Addr)
 	logger.Println(os.Getwd())
 
-	entries, err := os.ReadDir("../")
+	entries, err := os.ReadDir("./")
 	if err != nil {
 		log.Fatal(err)
 	}
